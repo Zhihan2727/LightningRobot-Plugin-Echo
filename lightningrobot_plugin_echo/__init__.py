@@ -1,17 +1,14 @@
-from lightningrobot.plugin import *
+import re
+from lightningrobot.plugin import Plugin
+def __init__(self, adapter):
+    self.adapter = adapter  # 存储适配器引用
 
-PluginMetadata = Metadata(
-    name="复读机Echo",
-    description="复读用户消息",
-    usage="发送echo 需要复读的内容即可使用。",
-    type="application",
-    homepage="github.com/Zhihan2727/LightningRobot-Plugin-Echo",
-    # 发布必填。
-)
+async def command(self, message,event_type,id):
+    if re.search(r"^(#|/)?(echo|复读)$", message):
+        echo(message,event_type,id)
+    else:
+        pass
 
-def commands(message):
-    if message == "复读":
-        return command1(message)
- 
-def command1(text: str) -> str:
-    return text
+async def echo(self,message,event_type,id):
+    text = re.sub(r"^(#|/)?(echo|复读)$","",message)
+    await self.adapter.send_message(event_type,id,text)
