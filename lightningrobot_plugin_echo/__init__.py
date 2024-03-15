@@ -1,9 +1,10 @@
 import re
 from lightningrobot.plugin import Plugin
-def __init__(self, adapter):
-    self.adapter = adapter  # 存储适配器引用
 
 class Main(Plugin):
+    def __init__(self, adapter):
+        self.adapter = adapter  # 存储适配器引用
+
     async def command(self, message,event_type,id):
         if re.search(r"^(#|/)?(echo|复读)$", message):
             echo(message,event_type,id)
