@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "lightningrobot-plugin-echo"
-version = "0.1.1"
+version = "0.1.2"
 description = "闪电机器人复读机插件。"
 authors = ["Zhihan <zhihan2727@hotmail.com>"]
 readme = "README.md"
