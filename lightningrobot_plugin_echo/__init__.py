@@ -7,10 +7,10 @@ class Main(Plugin):
 
     async def command(self, message,event_type,id):
         if re.search(r"^(#|/)?(echo|复读)$", message):
-            echo(message,event_type,id)
+            Main.echo(message,event_type,id,message)
         else:
             pass
 
-async def echo(self,message,event_type,id):
-    text = re.sub(r"^(#|/)?(echo|复读)$","",message)
-    await self.adapter.send_message(event_type,id,text)
+    async def echo(self,message,event_type,id):
+        text = re.sub(r"^(#|/)?(echo|复读)$","",message)
+        await self.adapter.send_message(event_type,id,text)
